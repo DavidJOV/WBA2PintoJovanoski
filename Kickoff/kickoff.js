@@ -9,7 +9,7 @@ fs.readFile('staedte.json', 'utf8', function (err, data) {
 
   obj.cities.sort(function (a, b) {
     return a.population - b.population;
-}
+  }
 );
 
 }
@@ -17,7 +17,7 @@ fs.readFile('staedte.json', 'utf8', function (err, data) {
 
 //fs.writeFile("staedte_sortiert.json",'utf8', JSON.stringify(obj));
 fs.writeFile("staedte_sortiert.json",'utf8', function (err, data){
-  
+
     if (err) throw err;
     JSON.stringify(obj);
 
