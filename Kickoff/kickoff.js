@@ -11,7 +11,7 @@ fs.readFile('staedte.json', 'utf8', function (err, data) {
     return a.population - b.population;
     });
 
-fs.writeFile("staedte_sortiert.json", JSON.stringify(obj));
+fs.writeFile("staedte_sortiert.json",'utf8', JSON.stringify(obj));
   for (arraynumber in obj.cities)
 
   console.log(chalk.yellow('\n','name: ',obj.cities[arraynumber].name)
