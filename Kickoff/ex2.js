@@ -1,4 +1,4 @@
-var	fs	=	require('fs');
+var	fs = require('fs');
 
 var chalk = require('chalk');
 
@@ -24,17 +24,17 @@ var obj3;
     
  });
     
-    fs.writeFile("concatcities.json",'utf8', function(err, data){
+    fs.writeFile("concatcities.json",JSON.stringify(obj3),'utf8', function(err, data){
 
         if(err) throw err;
 
-        JSON.stringify(obj3);
-
-        for (arraynumber in obj.cities)
-        console.log(chalk.yellow('\n','name: ',obj.cities[arraynumber].name)
-                ,chalk.red('\n','country: ',obj.cities[arraynumber].country)
-                ,chalk.green('\n','population: ',obj.cities[arraynumber].population)
-                ,'\n','\n','-------------');
+        for(i=0;i< obj3.length;i++){
+        
+        console.log(chalk.blue('\n','name: ',obj3[i].name),
+                    chalk.red('\n country: ',obj3[i].country),
+                    chalk.yellow( '\n population: ',obj3[i].population),
+                '\n --------------');
+    }
 
     });
     
