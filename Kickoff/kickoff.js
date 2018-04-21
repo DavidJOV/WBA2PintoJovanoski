@@ -4,7 +4,7 @@ var obj;
 
 fs.readFile('staedte.json', 'utf8', function (err, data) {
 
-  if (err) throw err;
+  
   obj = JSON.parse(data);
   
   obj.cities.sort(function (a, b) {
