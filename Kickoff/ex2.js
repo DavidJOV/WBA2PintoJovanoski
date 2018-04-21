@@ -20,7 +20,7 @@ var obj3;
  
     obj3.sort(function (a,b){
 
-    return a.population - b.population;
+    return a.population - b.population; 
     
  });
     

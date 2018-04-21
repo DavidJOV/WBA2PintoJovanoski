@@ -4,7 +4,8 @@
   "description": " kickoff exercisse",
   "main": "kickoff.js",
   "dependencies": {
-    "chalk": "^2.3.2"
+    "chalk": "^2.3.2",
+    "promise": "^8.0.1"
   },
   "devDependencies": {},
   "scripts": {
