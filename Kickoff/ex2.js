@@ -30,13 +30,11 @@ var obj3;
 
         JSON.stringify(obj3);
 
-        for(i=0;i< obj3.length;i++){
-        
-        console.log(chalk.blue('\n','name: ',obj3[i].name),
-        chalk.red('\n country: ',obj3[i].country),
-        chalk.yellow( '\n population: ',obj3[i].population),
-                '\n --------------');
-    }
+        for (arraynumber in obj.cities)
+        console.log(chalk.yellow('\n','name: ',obj.cities[arraynumber].name)
+                ,chalk.red('\n','country: ',obj.cities[arraynumber].country)
+                ,chalk.green('\n','population: ',obj.cities[arraynumber].population)
+                ,'\n','\n','-------------');
 
     });
     
