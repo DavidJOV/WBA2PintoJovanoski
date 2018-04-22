@@ -26,7 +26,7 @@ var obj3;
     
     fs.writeFile("concatcities.json",JSON.stringify(obj3),'utf8', function(err, data){
 
-        if(err) throw err;
+        
 
         for(i=0;i< obj3.length;i++){
         
