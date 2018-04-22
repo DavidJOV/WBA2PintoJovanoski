@@ -35,7 +35,7 @@ p
 .then(function() { 
 
 	for(i in obj.cities){
-		console.log(chalk.red('\n',obj.cities[i].name));
+		//console.log(chalk.red('\n',obj.cities[i].name));
 	}
 
 })
@@ -54,7 +54,7 @@ var p2 = new Promise(function(resolve, reject) {
 
 		obj2 = JSON.parse(data2);
 
-		console.log('read');
+		//console.log('read');
 
 		if (err) 
 			reject(err); 
@@ -75,8 +75,7 @@ p2
 })
 .then(function(){
 
-	obj3 = Array.from(obj.cities).concat(Array.from(obj2.cities));
-	console.log('something happened here');
+	obj3 = Array.from(obj2.cities).concat(Array.from(obj.cities));
 
 })
 .then(function(){
@@ -90,7 +89,7 @@ p2
 .then(function() { 
 
 	for(i in obj2.cities){
-		console.log(chalk.red('\n',obj2.cities[i].name));
+		//console.log(chalk.red('\n',obj2.cities[i].name));
 	}
 
 })
