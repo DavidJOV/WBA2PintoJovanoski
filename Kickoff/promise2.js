@@ -82,8 +82,12 @@ p2
 
 	fs.writeFile("concatcities2.json",JSON.stringify(obj3),'utf8', function(err, data3){
 
-		if(err) throw err;
+		console.log('something happened here');
+
+		//if(err) throw err;
 	})
+
+	console.log('something happened here2');
 
 })	
 .then(function() { 
