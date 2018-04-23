@@ -10,7 +10,6 @@ var obj3;
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
     var p = new Promise(function(resolve, reject) {
 
         setTimeout(function(){
@@ -27,12 +26,9 @@ var obj3;
         });
         
         console.log('json1 gelesen');
-    },2000)
+    },3000)
     
     });
-
-
-
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,7 +74,6 @@ Promise.all([p,p2])
 
     fs.writeFile("concatcities3.json",JSON.stringify(obj3),'utf8', function(err, data3){
 
-		//if(err) throw err;
 	})
 
 	console.log('concatcities3 now exists!');
