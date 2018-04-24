@@ -5,6 +5,8 @@ var contents2;
 var contents3;
 
 var p1 = new Promise( function(resolve,reject){
+  console.log('rufe setTimeout() auf')
+  console.log('Springe zu nächster Task')
 setTimeout(function(){
   fs.readFile("staedte.json",'utf8',	function(err,	data1)	{
 
@@ -20,7 +22,7 @@ setTimeout(function(){
 
 
 
-},500)
+},10)
   });
 
 //---------------------------------------------------------------------------
@@ -30,6 +32,7 @@ var p2 = new Promise( function(resolve,reject){
   fs.readFile("mehr_staedte.json",'utf8',	function(err,	data2)	{
     if (err) throw err;
       contents2 = JSON.parse(data2);
+      for(var i = 0 ;i<=1000000000;i++){if(i == 1000000000){console.log('Task länger als Timeout(WECKER) -> ###code blockiert###')}};
       if (err) 
 			reject(err); 
 		else 
