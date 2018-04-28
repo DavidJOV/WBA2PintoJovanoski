@@ -32,7 +32,7 @@ var p2 = new Promise( function(resolve,reject){
   fs.readFile("mehr_staedte.json",'utf8',	function(err,	data2)	{
     if (err) throw err;
       contents2 = JSON.parse(data2);
-      for(var i = 0 ;i<=1000000000;i++){if(i == 1000000000){console.log('Task länger als Timeout(WECKER) -> ###code blockiert###')}};
+      for(var i = 0 ;i<=1000000000;i++){if(i == 1000000000){console.log('Task länger als setTimeout(WECKER) -> ###code blockiert###')}};
       if (err) 
 			reject(err); 
 		else 
