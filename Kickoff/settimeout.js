@@ -47,7 +47,7 @@ var p2 = new Promise(function(resolve, reject) {
 			resolve(data2);
     });
     
-    console.log('json2 gelesen');
+    console.log('json2 gelesen');  
 
 });
 
