@@ -7,7 +7,7 @@
   });
   
 
-  googleMapsClient.geocode({address: 'Th Köln Gummersbach'})
+  googleMapsClient.geocode({address: "f21f13iasdiüü"})
     .asPromise()
     .then((response) => {
       console.log(response.json.results);
