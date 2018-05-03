@@ -1,32 +1,34 @@
-function getTweets( id ) { 
+let getTweets = (id) => { 
 
-    return fetch("https://api.twitter.com/user/" + id )
+    return fetch("https://api.twitter.com/user/${id}")
 
-    .then(function(response) {
+    .then(response => {
 
-            return JSON.parse(response);
-    })
-
-    .then( function(response) {
-
-            return response.data;
+        return JSON.parse(response);
 
     })
 
-    .then(function(tweets) {
+    .then(response => {
 
-            return tweets.filter(function(tweet) {
+        return response.data;
 
-                     return tweet.stars > 50    
+    })
+
+    .then(tweets => {
+
+        return tweets.filter(tweet => {
+
+            return tweet.stars > 50    
 
              })
     })
 
-    .then(function(tweets) {
+    .then(tweets => {
 
-            return tweets.filter(function(tweet) {
+        return tweets.filter(tweet => {
                 
-                     return tweet.rts > 50
+            return tweet.rts > 50
+
             })
     })
 } 
