@@ -1,8 +1,13 @@
 //ich verstehe diese Aufgabe nicht.
+//hoffentlich richtig :D
 
-function sortInteger(){
+function sortInteger(array){
+    
+        return array.sort();
+      
+    }
 
-}
+
 
 let array = [4, 1]; 
 
