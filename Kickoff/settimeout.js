@@ -59,16 +59,13 @@ Promise.all([p,p2])
     obj3 = Array.from(obj2.cities).concat(Array.from(obj.cities));
     console.log('concated');
 
-})
-.then(function(){
-
     obj3.sort(function (a, b) {
 		return a.population - b.population;
 	  }
     );
 
     console.log('concated array sorted');
-    
+
 })
 .then(function(){
 
