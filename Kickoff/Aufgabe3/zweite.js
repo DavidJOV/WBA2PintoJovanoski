@@ -1,5 +1,4 @@
-var fetch2 = require('fetch');
-var fetch3 = require('whatwg-fetch');
+var fetch = require('XMLHttpRequest');
 
 let getTweets = (id) => { 
 
