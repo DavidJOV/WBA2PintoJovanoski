@@ -1,6 +1,9 @@
+var fetch2 = require('fetch');
+var fetch3 = require('whatwg-fetch');
+
 let getTweets = (id) => { 
 
-    return fetch("https://api.twitter.com/user/${id}")
+    return fetch("https://api.twitter.com/user/" + id)
 
     .then(response => {
 
@@ -32,3 +35,5 @@ let getTweets = (id) => {
             })
     })
 } 
+
+console.log(getTweets(25073877));
