@@ -7,8 +7,6 @@ function sortInteger(array){
       
     }
 
-
-
 let array = [4, 1]; 
 
 console.log(sortInteger(array));
