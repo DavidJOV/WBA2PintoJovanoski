@@ -1,4 +1,4 @@
-var fetch = require('XMLHttpRequest');
+var fetch = require("fetch");
 
 let getTweets = (id) => { 
 
