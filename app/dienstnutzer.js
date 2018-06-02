@@ -4,7 +4,13 @@ let serviceURL = 'http://localhost:3000';
 
 let resourceURI = serviceURL + '/users/0';
 
-let options = 1;
+let options = {
+    uri: resourceURI,
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json'
+    }
+}
 
 request ( options, (error, response,body) =>{
 
@@ -12,4 +18,8 @@ request ( options, (error, response,body) =>{
         console.log(error);
         return;
     }
+
+    console.log('-------body-------');
+    console.log(JSON.parse(body));
+    console.log('------------------');
 })
