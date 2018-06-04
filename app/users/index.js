@@ -10,7 +10,7 @@ fs.readFile(__dirname+'/users.json', 'utf8', function (err, data) {
 
   });
 
-router.post('/', (req, res) => {
+router.post('/', bodyParser.json(), (req, res) => {
 
     fs.writeFile(__dirname+"/users.json",JSON.stringify(obj),'utf8', function (err, data){
 
