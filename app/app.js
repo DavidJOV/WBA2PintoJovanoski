@@ -1,6 +1,6 @@
-const express = require('express')
+const express = require('express');
 const fs = require('fs');
-const app = express()
+const app = express();
 
 //Request Logging
 app.use((req,res,next)=>{
