@@ -6,7 +6,7 @@ var obj;
 
 fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
-    console.log(data);
+    //console.log(data);
 
   }
   );
