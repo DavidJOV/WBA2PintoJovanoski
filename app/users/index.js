@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-//const fs = require('fs');
+const fs = require('fs');
 
 router.post('/', (req, res) => {
 
