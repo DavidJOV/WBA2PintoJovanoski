@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var obj;
 
-fs.readFile(__dirname+'/users.json', 'utf8', function (err, data) {
+fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
     console.log(data);
 
@@ -13,18 +13,21 @@ fs.readFile(__dirname+'/users.json', 'utf8', function (err, data) {
 
 router.post('/', (req, res) => {
 
-    fs.writeFile("staedte_sortiert.json",JSON.stringify(obj),'utf8', function (err, data){
-
+    fs.writeFile("employees.json",JSON.stringify(obj),'utf8', function (err, data){
+        
     });
+
+   console.log('posted');
    res.send('POST route on Users.');
    
 });
 
 router.get('/', (req, res) => {
 
+    console.log('got');
     res.send(obj);
+    console.log("really got");
 
  });
 
- 
 module.exports = router;

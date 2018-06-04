@@ -12,7 +12,7 @@ let options = {
     }
 }
 
-request(options,(err, res,body) =>{
+request(options,(err, res, body) =>{
 
     if(err){
         console.log(err);

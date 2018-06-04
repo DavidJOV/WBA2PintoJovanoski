@@ -15,4 +15,7 @@ const settings = {
 const users = require('./users/index.js');
 app.use('/users', users );
 
+const employees = require('./employees/index.js');
+app.use('/employees', employees );
+
 app.listen(settings.port, () => console.log("Example app listening on port: "+settings.port+"!"))
