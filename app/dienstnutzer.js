@@ -2,7 +2,7 @@ let request = require('request');
 
 let serviceURL = 'http://localhost:3000';
 
-let resourceURI = serviceURL + '/users/0';
+let resourceURI = serviceURL + '/users';
 
 let options = {
     uri: resourceURI,
@@ -12,14 +12,13 @@ let options = {
     }
 }
 
-request ( options, (error, response,body) =>{
+request(options,(err, res,body) =>{
 
-    if(error){
-        console.log(error);
+    if(err){
+        console.log(err);
         return;
     }
-
-    console.log('-------body-------');
+    
     console.log(JSON.parse(body));
-    console.log('------------------');
+
 })

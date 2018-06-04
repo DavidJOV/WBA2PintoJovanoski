@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 
     console.log('got');
     res.send('GET route on Users.');
+    console.log();
 
  });
 

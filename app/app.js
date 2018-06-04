@@ -9,7 +9,7 @@ app.use((req,res,next)=>{
 })
 
 const settings = {
-    port: 3000
+    port: process.env.PORT || 3000
 };
 
 const users = require('./users/users.js');
