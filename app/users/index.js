@@ -14,6 +14,7 @@ fs.readFile(__dirname+'/users.json', 'utf8', function (err, data) {
 router.post('/', (req, res) => {
 
     fs.writeFile("staedte_sortiert.json",JSON.stringify(obj),'utf8', function (err, data){
+        if (err) throw err;
 
     });
    res.send('POST route on Users.');
@@ -26,5 +27,5 @@ router.get('/', (req, res) => {
 
  });
 
- 
+
 module.exports = router;
