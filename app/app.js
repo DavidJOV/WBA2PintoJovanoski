@@ -12,7 +12,7 @@ const settings = {
     port: process.env.PORT || 3000
 };
 
-const users = require('./users/users.js');
+const users = require('./users/index.js');
 app.use('/users', users );
 
 app.listen(settings.port, () => console.log("Example app listening on port: "+settings.port+"!"))

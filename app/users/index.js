@@ -12,9 +12,14 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
 
+    var person= {
+        name:"john",
+        lastname:"doe"
+    }
+
     console.log('got');
-    res.send('GET route on Users.');
-    console.log();
+    res.send(person);
+    console.log("really got");
 
  });
 
