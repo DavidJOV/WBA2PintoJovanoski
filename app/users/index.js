@@ -6,7 +6,7 @@ var obj;
 
 fs.readFile(__dirname+'/users.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
-    console.log(data);
+    //console.log(data);
 
   });
 
@@ -17,7 +17,8 @@ router.post('/', (req, res) => {
         if (err) throw err;
 
     });
-   res.send('POST route on Users.');
+
+    res.send(obj);
    
 });
 
