@@ -1,4 +1,19 @@
-{
-    "name":"Außen",
-    "lastname":"Dienstler"
+{"employees":[{
+    "name":"Max",
+    "lastname":"Mustermann",
+    "location":"",
+    "Spezialgebiet":"Baumaschinen",
+    "Kontaktdaten" :[{"TelNr": 3213123,
+                    "Email" : "MaxMustermann@finance.de"
+                    }]
+},{
+"name":"Max",
+"lastname":"Mustermann",
+"location":"",
+"Spezialgebiet":"Baumaschinen",
+"Kontaktdaten" :[{"TelNr": 3213123,
+                "Email" : "MaxMustermann@finance.de"
+                }]
+
 }
+]}
