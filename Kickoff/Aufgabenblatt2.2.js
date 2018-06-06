@@ -1,79 +1,52 @@
 var	fs	=	require('fs');
 var chalk = require('chalk');
+var promise = require('promise');
+
 var contents;
 var contents2;
 var contents3;
 
-var p1 = new Promise( function(resolve,reject){
-  console.log('rufe setTimeout() auf')
-  console.log('Springe zu nächster Task')
-setTimeout(function(){
-  fs.readFile("staedte.json",'utf8',	function(err,	data1)	{
+ function readTheFiles(){
+promise.readFile("mehr_staedte.json",'utf8',new Promise(function(resolve, reject) 
+{   request.get(options, function(err, resp, body) 
+    {    if(err) reject(err); 
+           else resolve(JSON.parse(body)); 
+          }); 
 
-    if (err) throw err;
+ fs.readFile("staedte.json",'utf8',	function(err,	data1)	{
+    fs.readFile("mehr_staedte.json",'utf8',	function(err,	data2)	{
+  if (err) throw err;
     contents = JSON.parse(data1);
-    if (err) 
-			reject(err); 
-		else 
-      resolve(data1);
-      console.log("FILE1")
-
-})
-
-
-
-},10)
+  contents.cities.sort(function (a,b){
+     return a.population - b.population;
   });
 
-//---------------------------------------------------------------------------
-
-var p2 = new Promise( function(resolve,reject){
-
-  fs.readFile("mehr_staedte.json",'utf8',	function(err,	data2)	{
-    if (err) throw err;
-      contents2 = JSON.parse(data2);
-      for(var i = 0 ;i<=1000000000;i++){if(i == 1000000000){console.log('Task länger als setTimeout(WECKER) -> ###code blockiert###')}};
-      if (err) 
-			reject(err); 
-		else 
-      resolve(data2);
-      console.log("FILE2")
-
-})});
-
-//---------------------------------------------------------------------------
-
-Promise.all([p1,p2]).then(function(){
-  contents3 = Array.from(contents.cities).concat(Array.from(contents2.cities));
-  console.log('Staedte verbunden');
-
-},function(err){
-  console.log(err);
-}).then(function(){
-  console.log('Staedte sortiert');
-  contents3.sort(function (a,b){
-    return a.population - b.population;
+  contents2 = JSON.parse(data2);
+    contents2.cities.sort(function (a,b){
+       return a.population - b.population;
+    });
     
- });
-}).then(function(){
-  var dataWrite = JSON.stringify(contents3)
-    
-    fs.writeFile("staedteneuA2.2.json", JSON.stringify(contents3));
-    console.log('Staedte in File geschrieben');
-
-
-}).then(function(){
-  var i;
-
-  for(i=0;i< contents3.length;i++){
    
-   console.log(chalk.blue('\n','name: ',contents3[i].name),
-   chalk.red('\n country: ',contents3[i].country),
-   chalk.yellow( '\n population: ',contents3[i].population),
-           '\n --------------');
+ contents3 = Array.from(contents.cities).concat(Array.from(contents2.cities));
+ 
+contents3.sort(function (a,b){
+    return a.population - b.population;
+ });
+ var dataWrite = JSON.stringify(contents3)
+    
+    fs.writeFile("staedteneuA2.1.json", JSON.stringify(contents3)); 
+     
+   
+   var i;
 
-}}).catch(function(err){
-  console.log(err);
-});
+   for(i=0;i< contents3.length;i++){
+    
+    console.log(chalk.blue('\n','name: ',contents3[i].name),
+    chalk.red('\n country: ',contents3[i].country),
+    chalk.yellow( '\n population: ',contents3[i].population),
+            '\n --------------');
+}
 
 
+})
+ });
