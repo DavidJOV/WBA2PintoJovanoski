@@ -4,29 +4,37 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var randomLocation = require('random-location');
 var obj;
+var employeesArray;
 
 
-function getEmployeesLocation(){
+
+function generateEmployeesLocation(){ // generating random location for each employee in employees.json (with a radiusg)
     const point = {
-        latitude: 51.02299,
+        latitude: 51.02299,    //Location von TH KÖLN GM
         longitude: 7.561990000000037
       }
-      const radius = 10000;
-        
-     
-     for(var i = 0; i<5;i++){
-         console.log(randomLocation.randomCirclePoint(point,radius));
+      const radius = 10000; // 10KM radius
+      fs.readFile('employees.json','utf8', function(err, data){
+        employeesArray = Array.from (JSON.parse(data).employees);
+        console.log(employeesArray[0].name);
+     for(var i = 0; i<employeesArray.length;i++){
+         employeesArray[i].location = randomLocation.randomCirclePoint(point,radius);
+         
      }
+     fs.writeFileSync("employees.json",JSON.stringify(employeesArray),'utf8', function(err, data2){
+
+    });
+});}
     
-}
 
 
-fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
+
+/*fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
     //console.log(data);
 
   }
-  );
+  );*/
 
 router.post('/', (req, res) => {
 
@@ -46,6 +54,6 @@ router.get('/', (req, res) => {
     console.log("really got");
 
  });
-getEmployeesLocation();
-getEmployeesLocation();
+generateEmployeesLocation();
+
 module.exports = router;
