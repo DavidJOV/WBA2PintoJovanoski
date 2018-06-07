@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
@@ -16,30 +17,27 @@ function generateEmployeesLocation(){ // generating random location for each emp
       }
       const radius = 10000; // 10KM radius
       fs.readFile('employees.json','utf8', function(err, data){
-        employeesArray = Array.from (JSON.parse(data));
-        console.log("BEFORE:");
-        for(i=0;i< employeesArray.length;i++){
-            console.log(chalk.blue('\n name: '+employeesArray[i].name+
-                                   '\n lastname: '+employeesArray[i].lastname)+
-                         chalk.red('\n location: ',+employeesArray[i].location.latitude +" " +employeesArray[i].location.longitude)+
-                                    '\n -----------------------------');
-                }
-        
+        console.log("BEFORE:")
+          console.log(chalk.red(data));
+        employeesArray = Array.from(JSON.parse(data));
+
      for(var i = 0; i<employeesArray.length;i++){
          employeesArray[i].location = randomLocation.randomCirclePoint(point,radius);
          
      }
+     
      console.log("AFTER:");
      for(i=0;i< employeesArray.length;i++){
-        console.log(chalk.blue('\n name: '+employeesArray[i].name+
-                                '\n lastname: '+employeesArray[i].lastname)+
-                    chalk.green('\n location: ',+employeesArray[i].location.latitude +" "+ employeesArray[i].location.longitude)+
-                                 '\n -----------------------------');
-            }
-     fs.writeFileSync("employees.json",JSON.stringify(employeesArray),'utf8', function(err, data2){
+        console.log(chalk.green('\n name: '+employeesArray[i].name+
+        '\n lastname: '+employeesArray[i].lastname+
+        '\n location: ',+employeesArray[i].location),
+                '\n -----------------------------');
 
-    });
-});}
+             employeesArray = JSON.stringify(employeesArray);});
+     fs.writeFileSync("employees.json",employeesArray,'utf8', function(err, data2){
+
+     });
+}
     
 
 
@@ -47,6 +45,7 @@ function generateEmployeesLocation(){ // generating random location for each emp
 /*fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
     //console.log(data);
+
   }
   );*/
 
