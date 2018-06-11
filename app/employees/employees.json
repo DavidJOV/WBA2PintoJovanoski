@@ -1,4 +1,1 @@
-{
-    "name":"Außen",
-    "lastname":"Dienstler"
-}
+[{"name":"Max","lastname":"Mustermann","location":{"latitude":51.05214835762436,"longitude":7.674460939198773},"Spezialgebiet":"Baumaschinen","Kontaktdaten":[{"TelNr":3213123,"Email":"MaxMustermann@finance.de"}]},{"name":"Peter","lastname":"Lustig","location":{"latitude":50.987593673259354,"longitude":7.600623689415079},"Spezialgebiet":"Wohnwagen","Kontaktdaten":[{"TelNr":3213123,"Email":"PeterLustig@finance.de"}]}]
