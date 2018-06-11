@@ -6,6 +6,7 @@ var chalk = require('chalk');
 var randomLocation = require('random-location');
 var obj;
 var employeesArray;
+var distance = require('../distances/distancer.js');
 
 
 
@@ -41,8 +42,36 @@ function generateEmployeesLocation(){ // generating random location for each emp
     });
 });}
     
+function getNearestEmployee(custmorAdress){
+    fs.readFile('employees.json','utf8', function(err, data){
+        employeesArray = Array.from (JSON.parse(data));
+        var distanceArray = [employeesArray.length];
+        for(i=0;i< employeesArray.length;i++){
+           var origin = employeesArray[i].location.latitude +","+ employeesArray[i].location.longitude;
+           overGive(i,function(i){
 
 
+           distance.getDistance(origin,custmorAdress,function(distanceToCustmor){
+               
+                distanceArray[i]= {
+                   distance: distanceToCustmor,
+                   employee: employeesArray[i].name
+                   
+                }
+                
+                console.log("Mitarbeiter: " +i+ " "+JSON.stringify(distanceArray[i])); //muss noch sortiert werden
+                
+            });
+        });
+
+
+        }});}
+
+function overGive(i,callback){
+    callback(i);
+}
+
+getNearestEmployee("TH KOELN CAMPUS GUMMERSBACH");
 
 /*fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
@@ -68,6 +97,6 @@ router.get('/', (req, res) => {
     console.log("really got");
 
  });
-generateEmployeesLocation();
+//generateEmployeesLocation();
 
 module.exports = router;
