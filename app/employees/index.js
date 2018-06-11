@@ -43,12 +43,11 @@ function generateEmployeesLocation(){ // generating random location for each emp
     
 
 
-
-/*fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
+fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
-    //console.log(data);
-  }
-  );*/
+    console.log(data);
+
+  });
 
 router.post('/', (req, res) => {
 
@@ -63,11 +62,8 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
 
-    console.log('got');
     res.send(obj);
-    console.log("really got");
 
  });
-generateEmployeesLocation();
 
 module.exports = router;
