@@ -4,7 +4,13 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "chalk": "^2.4.1",
     "express": "^4.16.3",
+    "google-distance": "^1.0.1",
+    "location": "0.0.1",
+    "package.json": "^2.0.1",
+    "random": "^2.0.3",
+    "random-location": "^1.0.12",
     "request": "^2.87.0"
   },
   "devDependencies": {},
