@@ -6,7 +6,7 @@ var start = ["51.05214835762436,7.674460939198773"];
 var dest = ["TH Köln Campus Gummersbach"];
 var distanceToCustemor;
 
-function getDistance(origin,destination)
+var getDistance = function (origin,destination,returnDistance)
 {
     var distanceToCustemor;
         distance.get({
@@ -16,7 +16,8 @@ function getDistance(origin,destination)
             if (err) return console.log(err);
           
             distanceToCustemor= data[0].distanceValue;
-         console.log("DISTANCE: "+distanceToCustemor);
+        // console.log("DISTANCE: "+distanceToCustemor);
+         returnDistance(distanceToCustemor);
          
        //  var distanceToCustemorForJSON= {
        //      distance: distanceToCustemor
@@ -25,18 +26,17 @@ function getDistance(origin,destination)
          
          
           });
-          setTimeout(() => { console.log("I NEED TO WAIT FOR THE CALL BACK :"+distanceToCustemor);},0);
-          setTimeout(() => { return distanceToCustemor},5000);
-          setTimeout(() => {  console.log("I WAITED FOR THE CALL BACK :"+distanceToCustemor);},1000);
-        }
+        //  setTimeout(() => { console.log("I NEED TO WAIT FOR THE CALL BACK :"+distanceToCustemor);},0);
+          //setTimeout(() => { return distanceToCustemor},0);
+          //setTimeout(() => {  console.log("I WAITED FOR THE CALL BACK :"+distanceToCustemor);},0);
+        };
 
 
         
 
-var x = getDistance(start,dest);
 
 
-console.log("X");
-setTimeout(() => {
-    console.log(x);
-}, 10000); 
+
+
+var exports = module.exports = {};
+exports.getDistance = getDistance;
