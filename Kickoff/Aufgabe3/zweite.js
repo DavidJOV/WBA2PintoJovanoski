@@ -1,6 +1,8 @@
+var fetch = require("fetch");
+
 let getTweets = (id) => { 
 
-    return fetch("https://api.twitter.com/user/${id}")
+    return fetch("https://api.twitter.com/user/" + id)
 
     .then(response => {
 
@@ -32,3 +34,5 @@ let getTweets = (id) => {
             })
     })
 } 
+
+console.log(getTweets(25073877));

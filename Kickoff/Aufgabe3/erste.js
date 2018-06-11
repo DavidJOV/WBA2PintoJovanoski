@@ -1,6 +1,6 @@
 for(var x = 0; x < 10; x++) {
      console.log(x);
+     console.log('The number is ' + x);
       }
-      setTimeout(function() {
-        console.log('The number is ' + x);
-      }, 1000);
+
+     
