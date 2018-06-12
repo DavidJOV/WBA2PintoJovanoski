@@ -6,6 +6,7 @@ var chalk = require('chalk');
 var randomLocation = require('random-location');
 var obj;
 var employeesArray;
+var nearestEmployee;
 var distance = require('../distances/distancer.js');
 var distanceArray;
 
@@ -19,26 +20,28 @@ function generateEmployeesLocation(){ // generating random location for each emp
       const radius = 10000; // 10KM radius
       fs.readFile('employees.json','utf8', function(err, data){
         employeesArray = Array.from (JSON.parse(data));
-        console.log("BEFORE:");
+       //TESTING
+        /*console.log("BEFORE:");
         for(i=0;i< employeesArray.length;i++){
             console.log(chalk.blue('\n name: '+employeesArray[i].name+
                                    '\n lastname: '+employeesArray[i].lastname)+
                          chalk.red('\n location: ',+employeesArray[i].location.latitude +" " +employeesArray[i].location.longitude)+
                                     '\n -----------------------------');
-                }
+                }*/
         
      for(var i = 0; i<employeesArray.length;i++){
          employeesArray[i].location = randomLocation.randomCirclePoint(point,radius);
          
      }
-     console.log("AFTER:");
+     //TESTING
+     /*console.log("AFTER:");
      for(i=0;i< employeesArray.length;i++){
         console.log(chalk.blue('\n name: '+employeesArray[i].name+
                                 '\n lastname: '+employeesArray[i].lastname)+
                     chalk.green('\n location: ',+employeesArray[i].location.latitude +" "+ employeesArray[i].location.longitude)+
                                  '\n -----------------------------');
-            }
-     fs.writeFileSync("employees.json",JSON.stringify(employeesArray),'utf8', function(err, data2){
+            }*/
+     fs.writeFile("employees.json",JSON.stringify(employeesArray),'utf8', function(err, data2){
 
     });
 });}
@@ -97,11 +100,11 @@ p
 
 
 
-function getNearestEmployee(custmorAdress){
+function getEmployeesDistances(custmorAdress){
     fs.readFile('employees.json','utf8', function(err, data){
         employeesArray = Array.from (JSON.parse(data));
         var distanceArray = [employeesArray.length];
-      
+ 
         for(i=0;i< employeesArray.length;i++){
            var origin = employeesArray[i].location.latitude +","+ employeesArray[i].location.longitude;
            overGive(i,function(i){
@@ -111,11 +114,16 @@ function getNearestEmployee(custmorAdress){
                
                 distanceArray[i]= {
                    distance: distanceToCustmor,
-                   employeeName: employeesArray[i].name,
-                   employeeLastname: employeesArray[i].lastname,
-                   employeeSpezialgebiet: employeesArray[i].Spezialgebiet
+                   employeeName: employeesArray[i].name
+                   //employeeLastname: employeesArray[i].lastname,
+                   //employeeSpezialgebiet: employeesArray[i].Spezialgebiet
                    
                 }
+                fs.writeFile("employeesDistanceToCustemor.json",JSON.stringify(distanceArray), function(){
+        
+                })
+
+                /*console.log(distanceArray[i])
                 if(distanceArray[i-1]!=undefined){
                     let temp;
                     if(distanceArray[i-1].distance > distanceArray[i].distance){
@@ -124,7 +132,7 @@ function getNearestEmployee(custmorAdress){
                         distanceArray[i]=temp;
                     }
                 }
-                console.log(JSON.stringify(distanceArray[0]));
+                //console.log(JSON.stringify(distanceArray[0]));
                 //console.log("Mitarbeiter: "+i+" "+JSON.stringify(distanceArray[i].employeeName)+" "+JSON.stringify((distanceArray[i].distance)/1000)+" KM"); //muss noch sortiert werden
                /*sortIT(distanceArray,function(distanceArray){
 
@@ -164,13 +172,25 @@ function getNearestEmployee(custmorAdress){
 
 function sortIT(array,sortIT){  // not used yet
     sortIT(array);
-}        
+}       
+
+function getNearestEmployee(){
+    fs.readFile("employeesDistanceToCustemor.json",function(err,data){
+        nearestEmployee = Array.from(JSON.parse(data));
+        nearestEmployee.sort(function(a,b){
+            return a.distance -b.distance;
+        });
+        console.log(nearestEmployee[0]);
+    });
+}
 
 function overGive(i,callback){
     callback(i);
 }
-
-getNearestEmployee("TH KOELN CAMPUS GUMMERSBACH");
+//TESTING
+setInterval(function(){generateEmployeesLocation();},1000); 
+setInterval(function(){getEmployeesDistances("TH KOELN CAMPUS GUMMERSBACH");},5000); 
+setInterval(function(){getNearestEmployee();},5000); 
 
 /*fs.readFile(__dirname+'/employees.json', 'utf8', function (err, data) {
     obj = JSON.parse(data);
@@ -196,6 +216,6 @@ router.get('/', (req, res) => {
     console.log("really got");
 
  });
-//generateEmployeesLocation();
+
 
 module.exports = router;
